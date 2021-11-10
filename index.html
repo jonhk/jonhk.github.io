@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jonathan Hackner | Programming and Coding Work</title>
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/pqe3moo.css">
+  </head>
+  <body class="home-style">
+    <header>
+      <div id="main-nav-wrapper">
+        <nav id="main-nav">
+          <ul>
+            <li class="logo-top-frame">
+              <a href="#">
+                <img class="logo-top" src="./img/jhk-logo-yellow.png" alt="Jonathan Hackner logo">
+              </a>
+            </li>
+            <li class="main-nav-items">
+              <a href="#">work</a>
+            </li>
+            <li class="main-nav-items main-nav-style-left">
+              <a href="./pages/academics.html">academics</a>
+            </li>
+            <li class="main-nav-items main-nav-style-left">
+              <a href="#">projects</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="content">
+      <p class="intro-message" title="Hi my name is Jonathan. It is nice to meet you.">
+        <span href="" class="typewrite" data-period="2000" data-type='[ "Hi my name is Jonathan. It is nice to meet you.", "Hola, mi nombre es Jonathan. Estoy encantado de conocerte." ]'>
+          <span class="caret"></span>
+        </span>
+      </p>
+      <!-- NOTE: CSS Typewriter Effect referenced from — "CSS typewriter" by Daniel groen https://codepen.io/Danielgroen/pen/VeRPOq -->
+      <!-- NOTE: CSS Caret Typewriter Effect referenced from — "JS Typewriter" by Simon Shahriveri https://codepen.io/hi-im-si/pen/DHoup -->
+      <script type="text/javascript">
+          var TxtType = function(el, toRotate, period) {
+          this.toRotate = toRotate;
+          this.el = el;
+          this.loopNum = 0;
+          this.period = parseInt(period, 10) || 2000;
+          this.txt = '';
+          this.tick();
+          this.isDeleting = false;
+      };
+
+      TxtType.prototype.tick = function() {
+          var i = this.loopNum % this.toRotate.length;
+          var fullTxt = this.toRotate[i];
+
+          if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+          } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+          }
+
+          this.el.innerHTML = '<span class="caret">'+this.txt+'</span>';
+
+          var that = this;
+          var delta = 200 - Math.random() * 100;
+
+          if (this.isDeleting) { delta /= 2; }
+
+          if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+          } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+          }
+
+          setTimeout(function() {
+          that.tick();
+          }, delta);
+      };
+
+      window.onload = function() {
+          var elements = document.getElementsByClassName('typewrite');
+          for (var i=0; i<elements.length; i++) {
+              var toRotate = elements[i].getAttribute('data-type');
+              var period = elements[i].getAttribute('data-period');
+              if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+              }
+          }
+          // INJECT CSS
+          var css = document.createElement("style");
+          css.type = "text/css";
+          css.innerHTML = ".typewrite > .caret {}";
+          document.body.appendChild(css);
+      };
+      </script>
+    </main>
+    <footer class="footer-style-static">
+      <nav id="footer-nav-main">
+        <ul>
+          <li class="footer-nav-main-title">Jonathan Hackner</li>
+          <li class="footer-nav-main-items footer-nav-main-style-left">
+            <a href="#">notes</a>
+          </li>
+          <li class="footer-nav-main-items footer-nav-main-style-left">
+            <a href="#">sitemap</a>
+          </li>
+          <li class="footer-nav-main-items footer-nav-main-style-left">
+            <a href="#">status</a>
+          </li>
+          <li class="footer-nav-main-items footer-nav-main-style-left">
+            <a href="#">about</a>
+          </li>
+          <li class="footer-nav-main-items footer-nav-main-style-left">
+            <a href="#">contact</a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+    <script type="text/javascript"> </script>
+  </body>
+</html>
